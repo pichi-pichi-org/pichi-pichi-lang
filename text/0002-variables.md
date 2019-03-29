@@ -17,7 +17,7 @@ Variables are an invaluable necessity for pichi-pichi. Just like in other progra
 - A **variable** in pichi-pichi is the same as a variable in other languages like C# or C++
 - A **variable declaration** uses the `let` keyword to denote the start of a variable declaration
 - A **variable name** can start with a letter or underscore `_` and followed by a letter `A-Z a-z`, a digit `0-9`, or an underscore `_`
-- A **variable** can be assigned a value using the equals sign `=`
+- A **variable** can be assigned a value using a single equals sign `=`
 - A variable's value can be any type of `string`, `number`, `boolean`, `object` or `array`
 
 The structure to a valid variable starts with `let`, followed by the variable name, followed by the equals sign `=`, and then followed by the value.
@@ -47,7 +47,43 @@ Or using a line break:
   let x = 5
   let y = 3
 }}
+```
 
+You can also declare a variable but not assign it to anything. This will then have a value type of `undefined`.
+
+```
+{{ let x }}
+```
+
+Or, with an optional semicolon:
+
+```
+{{ let x; }}
+```
+
+You can combine this to later assign the variable a value:
+```
+{{ let x }}
+...
+...
+...
+{{ x = 5 }}
+```
+
+Furthermore, any variable can be reassigned a value.
+
+```
+{{ let x = 6; let y }}
+{{ x = 3 }}
+{{ y = 1 }}
+```
+
+If a user forgets to assign a value to variable, then an error should be thrown that could look like this:
+
+```
+input:1:11 error PPCHI0003: Unable to evaluate value on the rhs of the variable.
+
+1 {{ let x = }}
 ```
 
 # Reference-level explanation
